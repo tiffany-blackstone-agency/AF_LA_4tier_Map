@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c8be9c7cf4ab54261f9a77243df5040f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 50px; right: 50px; width: 280px; height: auto; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; border-radius: 5px; padding: 10px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);">
+    <h4 style="margin-top:0; margin-bottom: 10px;">Wealth Concentration Tiers</h4>
+    <p style="margin: 8px 0;"><span style="color: #8B0000; font-size: 20px;">●</span> <b>Tier 1:</b> Highest Wealth</p>
+    <p style="margin: 8px 0;"><span style="color: #FF4500; font-size: 20px;">●</span> <b>Tier 2:</b> High Wealth</p>
+    <p style="margin: 8px 0;"><span style="color: #FFA500; font-size: 20px;">●</span> <b>Tier 3:</b> Notable Wealth</p>
+    <p style="margin: 8px 0;"><span style="color: #FFD700; font-size: 20px;">●</span> <b>Tier 4:</b> Upper-Middle Wealth</p>
+    <hr style="margin: 10px 0;">
+    <p style="margin: 5px 0; font-size: 12px;"><b>Tier 4 Focus:</b></p>
+    <p style="margin: 5px 0; font-size: 11px;">• Charter customers<br>
+    • Fractional ownership<br>
+    • Future upgraders<br>
+    • $75K-$150K income range</p>
+    <hr style="margin: 10px 0;">
+    <p style="margin: 5px 0; font-size: 11px; font-style: italic;">
+    Target: Aviation investment potential<br>
+    <b>Total locations: 90</b></p>
+</div>
+    
+<div style="position: fixed; 
+            top: 10px; left: 50px; width: 500px; height: auto; 
+            background-color: white; z-index:9999; font-size:16px;
+            border:2px solid grey; border-radius: 5px; padding: 15px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);">
+    <h3 style="margin-top:0; color: #2C3E50;">Latin America - 4-Tier Wealth Targeting Map</h3>
+    <p style="margin: 5px 0; font-size: 13px;">Comprehensive lead generation across all wealth segments</p>
+    <p style="margin: 5px 0; font-size: 12px; color: #7F8C8D;">Use layer control to toggle tiers on/off</p>
+</div>
+    
+            <div class="folium-map" id="map_c8be9c7cf4ab54261f9a77243df5040f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c8be9c7cf4ab54261f9a77243df5040f = L.map(
+                "map_c8be9c7cf4ab54261f9a77243df5040f",
+                {
+                    center: [0.0, -60.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_acf2f3b9a9aeb97a45bbaa6a786499c5 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_acf2f3b9a9aeb97a45bbaa6a786499c5.addTo(map_c8be9c7cf4ab54261f9a77243df5040f);
+        
+    
+            var feature_group_fe14a4fb52751514230fd65a8ca0146a = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_d6aea9d1b45e17245aa3fd5652786438 = L.circleMarker(
+                [19.4326, -99.196],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_607dfe0a63460e569ce7655f949505f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f4d6a983dcc7956adbab7829f8e143bd = $(`<div id="html_f4d6a983dcc7956adbab7829f8e143bd" style="width: 100.0%; height: 100.0%;"><b>Polanco, Mexico City</b><br>Country: Mexico<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_607dfe0a63460e569ce7655f949505f1.setContent(html_f4d6a983dcc7956adbab7829f8e143bd);
+            
+        
+
+        circle_marker_d6aea9d1b45e17245aa3fd5652786438.bindPopup(popup_607dfe0a63460e569ce7655f949505f1)
+        ;
+
+        
+    
+    
+            var circle_marker_6f2ca6fa1ff3148f883cfa61204a59b3 = L.circleMarker(
+                [19.3595, -99.2676],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_fea0e0713a9636b1efe68ac8b3ea8476 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c3124beb55db940b2d7a5966b7edeb14 = $(`<div id="html_c3124beb55db940b2d7a5966b7edeb14" style="width: 100.0%; height: 100.0%;"><b>Santa Fe, Mexico City</b><br>Country: Mexico<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_fea0e0713a9636b1efe68ac8b3ea8476.setContent(html_c3124beb55db940b2d7a5966b7edeb14);
+            
+        
+
+        circle_marker_6f2ca6fa1ff3148f883cfa61204a59b3.bindPopup(popup_fea0e0713a9636b1efe68ac8b3ea8476)
+        ;
+
+        
+    
+    
+            var circle_marker_45fcd8b4036988040ee7a0bbba8ac235 = L.circleMarker(
+                [25.652, -100.407],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_e9246f75e0fe1a12e57743e4284c7360 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1895bc0e150e08857428ca87e8d99407 = $(`<div id="html_1895bc0e150e08857428ca87e8d99407" style="width: 100.0%; height: 100.0%;"><b>San Pedro Garza García, Monterrey</b><br>Country: Mexico<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_e9246f75e0fe1a12e57743e4284c7360.setContent(html_1895bc0e150e08857428ca87e8d99407);
+            
+        
+
+        circle_marker_45fcd8b4036988040ee7a0bbba8ac235.bindPopup(popup_e9246f75e0fe1a12e57743e4284c7360)
+        ;
+
+        
+    
+    
+            var circle_marker_79e006dde6a0e63fdb66e34dc833814c = L.circleMarker(
+                [19.405, -99.235],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_ac31eb4abb212fedd1e85da623772596 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_80705077037d1b04cea4ab9b870caea2 = $(`<div id="html_80705077037d1b04cea4ab9b870caea2" style="width: 100.0%; height: 100.0%;"><b>Bosques de las Lomas, Mexico City</b><br>Country: Mexico<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_ac31eb4abb212fedd1e85da623772596.setContent(html_80705077037d1b04cea4ab9b870caea2);
+            
+        
+
+        circle_marker_79e006dde6a0e63fdb66e34dc833814c.bindPopup(popup_ac31eb4abb212fedd1e85da623772596)
+        ;
+
+        
+    
+    
+            var circle_marker_dfa0dccb10e47254df26ccf02b2dbc75 = L.circleMarker(
+                [-22.9838, -43.219],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_157ddada346151763ad4c77a0033bf06 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e884f5ea3007ea0e2b4b20e95d72694e = $(`<div id="html_e884f5ea3007ea0e2b4b20e95d72694e" style="width: 100.0%; height: 100.0%;"><b>Leblon, Rio de Janeiro</b><br>Country: Brazil<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_157ddada346151763ad4c77a0033bf06.setContent(html_e884f5ea3007ea0e2b4b20e95d72694e);
+            
+        
+
+        circle_marker_dfa0dccb10e47254df26ccf02b2dbc75.bindPopup(popup_157ddada346151763ad4c77a0033bf06)
+        ;
+
+        
+    
+    
+            var circle_marker_52f35d2da48d891192746ab8d4217a88 = L.circleMarker(
+                [-22.9868, -43.2045],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_821b9bb2ae2496616739a50662186a25 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d16dc3b6832fc91ab959323637cef5c8 = $(`<div id="html_d16dc3b6832fc91ab959323637cef5c8" style="width: 100.0%; height: 100.0%;"><b>Ipanema, Rio de Janeiro</b><br>Country: Brazil<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_821b9bb2ae2496616739a50662186a25.setContent(html_d16dc3b6832fc91ab959323637cef5c8);
+            
+        
+
+        circle_marker_52f35d2da48d891192746ab8d4217a88.bindPopup(popup_821b9bb2ae2496616739a50662186a25)
+        ;
+
+        
+    
+    
+            var circle_marker_7857870bc15b25018495ab137313fdc9 = L.circleMarker(
+                [-23.5689, -46.6699],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_62d94f75ac10db2b4b700980203db98c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2c637700b7e4a4675654942880c7803c = $(`<div id="html_2c637700b7e4a4675654942880c7803c" style="width: 100.0%; height: 100.0%;"><b>Jardins, São Paulo</b><br>Country: Brazil<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_62d94f75ac10db2b4b700980203db98c.setContent(html_2c637700b7e4a4675654942880c7803c);
+            
+        
+
+        circle_marker_7857870bc15b25018495ab137313fdc9.bindPopup(popup_62d94f75ac10db2b4b700980203db98c)
+        ;
+
+        
+    
+    
+            var circle_marker_737a8bac7396d1201ab20611d71379d5 = L.circleMarker(
+                [-15.8267, -47.8714],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_0daecc934b8afde0e5398cbeffcbc534 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_483ee49d6b49651c06531c0323ba1e73 = $(`<div id="html_483ee49d6b49651c06531c0323ba1e73" style="width: 100.0%; height: 100.0%;"><b>Lago Sul, Brasília</b><br>Country: Brazil<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_0daecc934b8afde0e5398cbeffcbc534.setContent(html_483ee49d6b49651c06531c0323ba1e73);
+            
+        
+
+        circle_marker_737a8bac7396d1201ab20611d71379d5.bindPopup(popup_0daecc934b8afde0e5398cbeffcbc534)
+        ;
+
+        
+    
+    
+            var circle_marker_f42280fb0cf37163ebbfa67efcde7999 = L.circleMarker(
+                [6.2104, -75.5709],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_95d1b2b97d2af4528a06f12a08a49d94 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7375ae3bf142609c07028e23d2c97585 = $(`<div id="html_7375ae3bf142609c07028e23d2c97585" style="width: 100.0%; height: 100.0%;"><b>El Poblado, Medellín</b><br>Country: Colombia<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_95d1b2b97d2af4528a06f12a08a49d94.setContent(html_7375ae3bf142609c07028e23d2c97585);
+            
+        
+
+        circle_marker_f42280fb0cf37163ebbfa67efcde7999.bindPopup(popup_95d1b2b97d2af4528a06f12a08a49d94)
+        ;
+
+        
+    
+    
+            var circle_marker_7c19e9ef72331de99336cb507af30663 = L.circleMarker(
+                [4.6594, -74.0572],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_db28f13156f2b4b442d919cc3cb4ed94 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5c295b1ff2d0bbf6bd68d4ad4bb0c4e0 = $(`<div id="html_5c295b1ff2d0bbf6bd68d4ad4bb0c4e0" style="width: 100.0%; height: 100.0%;"><b>Rosales, Bogotá</b><br>Country: Colombia<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_db28f13156f2b4b442d919cc3cb4ed94.setContent(html_5c295b1ff2d0bbf6bd68d4ad4bb0c4e0);
+            
+        
+
+        circle_marker_7c19e9ef72331de99336cb507af30663.bindPopup(popup_db28f13156f2b4b442d919cc3cb4ed94)
+        ;
+
+        
+    
+    
+            var circle_marker_07c3f869467fe0ebd7aa0d0c18c1af45 = L.circleMarker(
+                [4.6675, -74.0527],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_4203f3c6fcef029a5eb14072347d8fe2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c285d8958da26d29a9a24b4e8fc33999 = $(`<div id="html_c285d8958da26d29a9a24b4e8fc33999" style="width: 100.0%; height: 100.0%;"><b>Chicó, Bogotá</b><br>Country: Colombia<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_4203f3c6fcef029a5eb14072347d8fe2.setContent(html_c285d8958da26d29a9a24b4e8fc33999);
+            
+        
+
+        circle_marker_07c3f869467fe0ebd7aa0d0c18c1af45.bindPopup(popup_4203f3c6fcef029a5eb14072347d8fe2)
+        ;
+
+        
+    
+    
+            var circle_marker_b5b3b6c02e03fa2c34430d1de962a99f = L.circleMarker(
+                [-34.5886, -58.3936],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_463a7ae4a4f079db0ea4fb39fe148577 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4dc68bfb946d427ab1360ec0acb46b7e = $(`<div id="html_4dc68bfb946d427ab1360ec0acb46b7e" style="width: 100.0%; height: 100.0%;"><b>Recoleta, Buenos Aires</b><br>Country: Argentina<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_463a7ae4a4f079db0ea4fb39fe148577.setContent(html_4dc68bfb946d427ab1360ec0acb46b7e);
+            
+        
+
+        circle_marker_b5b3b6c02e03fa2c34430d1de962a99f.bindPopup(popup_463a7ae4a4f079db0ea4fb39fe148577)
+        ;
+
+        
+    
+    
+            var circle_marker_b5a6a415d7030dc977a53cdfda20e7cf = L.circleMarker(
+                [-34.5804, -58.427],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_e6458ffa72adecdd2c51153050336e1a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_572f63125479ebc17e0628fef787e3eb = $(`<div id="html_572f63125479ebc17e0628fef787e3eb" style="width: 100.0%; height: 100.0%;"><b>Palermo, Buenos Aires</b><br>Country: Argentina<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_e6458ffa72adecdd2c51153050336e1a.setContent(html_572f63125479ebc17e0628fef787e3eb);
+            
+        
+
+        circle_marker_b5a6a415d7030dc977a53cdfda20e7cf.bindPopup(popup_e6458ffa72adecdd2c51153050336e1a)
+        ;
+
+        
+    
+    
+            var circle_marker_cae2100b7ff9bd74d91874ae42bdce20 = L.circleMarker(
+                [-34.6079, -58.3634],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_ebe6834d6e5d94a3e9d530697774a3dd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_894ded6b42b69446439436c8d9d016a4 = $(`<div id="html_894ded6b42b69446439436c8d9d016a4" style="width: 100.0%; height: 100.0%;"><b>Puerto Madero, Buenos Aires</b><br>Country: Argentina<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_ebe6834d6e5d94a3e9d530697774a3dd.setContent(html_894ded6b42b69446439436c8d9d016a4);
+            
+        
+
+        circle_marker_cae2100b7ff9bd74d91874ae42bdce20.bindPopup(popup_ebe6834d6e5d94a3e9d530697774a3dd)
+        ;
+
+        
+    
+    
+            var circle_marker_a87ac73d7b307c568cd9645e38ae57b4 = L.circleMarker(
+                [-33.3975, -70.5764],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_1717d52c0719960adaed2d892db7cd82 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c769d2a21ea324b162d074d35e75aa3e = $(`<div id="html_c769d2a21ea324b162d074d35e75aa3e" style="width: 100.0%; height: 100.0%;"><b>Vitacura, Santiago</b><br>Country: Chile<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_1717d52c0719960adaed2d892db7cd82.setContent(html_c769d2a21ea324b162d074d35e75aa3e);
+            
+        
+
+        circle_marker_a87ac73d7b307c568cd9645e38ae57b4.bindPopup(popup_1717d52c0719960adaed2d892db7cd82)
+        ;
+
+        
+    
+    
+            var circle_marker_1132cd2a9fb50540687c4a3fab43fc5a = L.circleMarker(
+                [-33.4108, -70.5731],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_897f143d8b594a23b610f651c52ad7f2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9cdf4a43f89bbdcc6b344754dafe068c = $(`<div id="html_9cdf4a43f89bbdcc6b344754dafe068c" style="width: 100.0%; height: 100.0%;"><b>Las Condes, Santiago</b><br>Country: Chile<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_897f143d8b594a23b610f651c52ad7f2.setContent(html_9cdf4a43f89bbdcc6b344754dafe068c);
+            
+        
+
+        circle_marker_1132cd2a9fb50540687c4a3fab43fc5a.bindPopup(popup_897f143d8b594a23b610f651c52ad7f2)
+        ;
+
+        
+    
+    
+            var circle_marker_33f4653469540202e567e0bc46423179 = L.circleMarker(
+                [-33.35, -70.5167],
+                {"bubblingMouseEvents": true, "color": "#8B0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8B0000", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fe14a4fb52751514230fd65a8ca0146a);
+        
+    
+        var popup_7135f53abba7b56b0613ffd5af612c64 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_71a0642d9ff170ad4ab1af79c1021a24 = $(`<div id="html_71a0642d9ff170ad4ab1af79c1021a24" style="width: 100.0%; height: 100.0%;"><b>Lo Barnechea, Santiago</b><br>Country: Chile<br><span style='color: #8B0000;'><b>Tier 1: Highest Wealth</b></span></div>`)[0];
+                popup_7135f53abba7b56b0613ffd5af612c64.setContent(html_71a0642d9ff170ad4ab1af79c1021a24);
+            
+        
+
+        circle_marker_33f4653469540202e567e0bc46423179.bindPopup(popup_7135f53abba7b56b0613ffd5af612c64)
+        ;
+
+        
+    
+    
+            feature_group_fe14a4fb52751514230fd65a8ca0146a.addTo(map_c8be9c7cf4ab54261f9a77243df5040f);
+        
+    
+            var feature_group_eb6dfdc7e35d343a0a6024eac1787e4f = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_774bcf16cb6d92bfe418ad709e277189 = L.circleMarker(
+                [19.4284, -99.21],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_5fc1085eb5f23a56aeb711416cb9c72a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f121e006b1767a01a506117f76ea0082 = $(`<div id="html_f121e006b1767a01a506117f76ea0082" style="width: 100.0%; height: 100.0%;"><b>Lomas de Chapultepec, Mexico City</b><br>Country: Mexico<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_5fc1085eb5f23a56aeb711416cb9c72a.setContent(html_f121e006b1767a01a506117f76ea0082);
+            
+        
+
+        circle_marker_774bcf16cb6d92bfe418ad709e277189.bindPopup(popup_5fc1085eb5f23a56aeb711416cb9c72a)
+        ;
+
+        
+    
+    
+            var circle_marker_280e3a9c426f8a08ce7044da057e6eaf = L.circleMarker(
+                [20.7214, -103.3918],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_7bacbb503c941d73c7a1a4c577fc6883 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7ed36c5d49d8f90b8cc30d8cf8596b7e = $(`<div id="html_7ed36c5d49d8f90b8cc30d8cf8596b7e" style="width: 100.0%; height: 100.0%;"><b>Guadalajara (Zapopan)</b><br>Country: Mexico<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_7bacbb503c941d73c7a1a4c577fc6883.setContent(html_7ed36c5d49d8f90b8cc30d8cf8596b7e);
+            
+        
+
+        circle_marker_280e3a9c426f8a08ce7044da057e6eaf.bindPopup(popup_7bacbb503c941d73c7a1a4c577fc6883)
+        ;
+
+        
+    
+    
+            var circle_marker_53b1f574f853102bd14c010772e14f2f = L.circleMarker(
+                [19.405, -99.255],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_c33d421ed7a740c88fe9f97ceb4204d1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_812427e062d19df141b7690bfc3bc34b = $(`<div id="html_812427e062d19df141b7690bfc3bc34b" style="width: 100.0%; height: 100.0%;"><b>Interlomas, Mexico City</b><br>Country: Mexico<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_c33d421ed7a740c88fe9f97ceb4204d1.setContent(html_812427e062d19df141b7690bfc3bc34b);
+            
+        
+
+        circle_marker_53b1f574f853102bd14c010772e14f2f.bindPopup(popup_c33d421ed7a740c88fe9f97ceb4204d1)
+        ;
+
+        
+    
+    
+            var circle_marker_6485142db84944ec7374ad433e9059b0 = L.circleMarker(
+                [22.8905, -109.9167],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_81401d2a267f05a8678330903db0953f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b43aa96b68ebfcecbaa12f1f16a8e9ef = $(`<div id="html_b43aa96b68ebfcecbaa12f1f16a8e9ef" style="width: 100.0%; height: 100.0%;"><b>Cabo San Lucas</b><br>Country: Mexico<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_81401d2a267f05a8678330903db0953f.setContent(html_b43aa96b68ebfcecbaa12f1f16a8e9ef);
+            
+        
+
+        circle_marker_6485142db84944ec7374ad433e9059b0.bindPopup(popup_81401d2a267f05a8678330903db0953f)
+        ;
+
+        
+    
+    
+            var circle_marker_60a8d95ab3b7a1b1c7ff5b187e1266c4 = L.circleMarker(
+                [20.6534, -105.2253],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_3dc8b63fb71e1fc171817fb20bf285fe = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_17f85389532f43ab939d51bafac45a07 = $(`<div id="html_17f85389532f43ab939d51bafac45a07" style="width: 100.0%; height: 100.0%;"><b>Puerto Vallarta (Marina)</b><br>Country: Mexico<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_3dc8b63fb71e1fc171817fb20bf285fe.setContent(html_17f85389532f43ab939d51bafac45a07);
+            
+        
+
+        circle_marker_60a8d95ab3b7a1b1c7ff5b187e1266c4.bindPopup(popup_3dc8b63fb71e1fc171817fb20bf285fe)
+        ;
+
+        
+    
+    
+            var circle_marker_ea25437925171da9ffb426f99706a7f3 = L.circleMarker(
+                [-23.6181, -46.6989],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_42ab3eaa75a1b4471ec98fb9e2151f47 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9398ddd199a7546c81c302636c7804a2 = $(`<div id="html_9398ddd199a7546c81c302636c7804a2" style="width: 100.0%; height: 100.0%;"><b>Morumbi, São Paulo</b><br>Country: Brazil<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_42ab3eaa75a1b4471ec98fb9e2151f47.setContent(html_9398ddd199a7546c81c302636c7804a2);
+            
+        
+
+        circle_marker_ea25437925171da9ffb426f99706a7f3.bindPopup(popup_42ab3eaa75a1b4471ec98fb9e2151f47)
+        ;
+
+        
+    
+    
+            var circle_marker_aea1cf12ca4d13e2955565b539e2c9d7 = L.circleMarker(
+                [-23.0037, -43.3646],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_c806c890631bfe41f3d5f1d9361ca080 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6e7024b94f4c014b5f981e77fad1d355 = $(`<div id="html_6e7024b94f4c014b5f981e77fad1d355" style="width: 100.0%; height: 100.0%;"><b>Barra da Tijuca, Rio</b><br>Country: Brazil<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_c806c890631bfe41f3d5f1d9361ca080.setContent(html_6e7024b94f4c014b5f981e77fad1d355);
+            
+        
+
+        circle_marker_aea1cf12ca4d13e2955565b539e2c9d7.bindPopup(popup_c806c890631bfe41f3d5f1d9361ca080)
+        ;
+
+        
+    
+    
+            var circle_marker_1ffdec86e0b86430731feb6378dd4274 = L.circleMarker(
+                [-23.4986, -46.8458],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_8097096c0310de8ffd14b16370ec3e55 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4a35de55103bfdd4379d9605f06658f3 = $(`<div id="html_4a35de55103bfdd4379d9605f06658f3" style="width: 100.0%; height: 100.0%;"><b>Alphaville, São Paulo</b><br>Country: Brazil<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_8097096c0310de8ffd14b16370ec3e55.setContent(html_4a35de55103bfdd4379d9605f06658f3);
+            
+        
+
+        circle_marker_1ffdec86e0b86430731feb6378dd4274.bindPopup(popup_8097096c0310de8ffd14b16370ec3e55)
+        ;
+
+        
+    
+    
+            var circle_marker_ae4979c342ad0330375bcd296cf457db = L.circleMarker(
+                [-8.1289, -34.9025],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_5f159f88f9aba57799d5a765323f7dad = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a76df69229f11f971d71df61ce350400 = $(`<div id="html_a76df69229f11f971d71df61ce350400" style="width: 100.0%; height: 100.0%;"><b>Boa Viagem, Recife</b><br>Country: Brazil<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_5f159f88f9aba57799d5a765323f7dad.setContent(html_a76df69229f11f971d71df61ce350400);
+            
+        
+
+        circle_marker_ae4979c342ad0330375bcd296cf457db.bindPopup(popup_5f159f88f9aba57799d5a765323f7dad)
+        ;
+
+        
+    
+    
+            var circle_marker_87e38318a639770f5156205cb518e437 = L.circleMarker(
+                [10.4037, -75.5516],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_585cb9d291cb88ef4cc944e709081190 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2a133b508e779628bf26089de6690961 = $(`<div id="html_2a133b508e779628bf26089de6690961" style="width: 100.0%; height: 100.0%;"><b>Cartagena (Bocagrande)</b><br>Country: Colombia<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_585cb9d291cb88ef4cc944e709081190.setContent(html_2a133b508e779628bf26089de6690961);
+            
+        
+
+        circle_marker_87e38318a639770f5156205cb518e437.bindPopup(popup_585cb9d291cb88ef4cc944e709081190)
+        ;
+
+        
+    
+    
+            var circle_marker_b7f0dc2402f86ec5fd260001b795f977 = L.circleMarker(
+                [11.2093, -74.2284],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_7d0a356d85f56ebecac5bc53a547100a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fc216d44916dd260042bf04e4a55737c = $(`<div id="html_fc216d44916dd260042bf04e4a55737c" style="width: 100.0%; height: 100.0%;"><b>Santa Marta (Rodadero)</b><br>Country: Colombia<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_7d0a356d85f56ebecac5bc53a547100a.setContent(html_fc216d44916dd260042bf04e4a55737c);
+            
+        
+
+        circle_marker_b7f0dc2402f86ec5fd260001b795f977.bindPopup(popup_7d0a356d85f56ebecac5bc53a547100a)
+        ;
+
+        
+    
+    
+            var circle_marker_1f8ab27f88e9b8370c5309e1b5fb0533 = L.circleMarker(
+                [4.675, -74.0461],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_45c104584e8a99a9c3a7e97f03efa00f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_db2f82be34b8377e2c37d670a0392fc1 = $(`<div id="html_db2f82be34b8377e2c37d670a0392fc1" style="width: 100.0%; height: 100.0%;"><b>Parque 93, Bogotá</b><br>Country: Colombia<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_45c104584e8a99a9c3a7e97f03efa00f.setContent(html_db2f82be34b8377e2c37d670a0392fc1);
+            
+        
+
+        circle_marker_1f8ab27f88e9b8370c5309e1b5fb0533.bindPopup(popup_45c104584e8a99a9c3a7e97f03efa00f)
+        ;
+
+        
+    
+    
+            var circle_marker_d66f23ba76a1a2381d745bdc25927c70 = L.circleMarker(
+                [-33.4292, -70.6105],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_a20da712544445484e99f86dcc050b9f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7b06668b09bf3c806c8e92884e59ed58 = $(`<div id="html_7b06668b09bf3c806c8e92884e59ed58" style="width: 100.0%; height: 100.0%;"><b>Providencia, Santiago</b><br>Country: Chile<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_a20da712544445484e99f86dcc050b9f.setContent(html_7b06668b09bf3c806c8e92884e59ed58);
+            
+        
+
+        circle_marker_d66f23ba76a1a2381d745bdc25927c70.bindPopup(popup_a20da712544445484e99f86dcc050b9f)
+        ;
+
+        
+    
+    
+            var circle_marker_3e33cb42dc22569489771171dc4c7127 = L.circleMarker(
+                [-33.3656, -70.5267],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_535c9297ab9c985350671f4ef20f4f32 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5e7f2cc06c58d31bb9773912b485a823 = $(`<div id="html_5e7f2cc06c58d31bb9773912b485a823" style="width: 100.0%; height: 100.0%;"><b>La Dehesa, Santiago</b><br>Country: Chile<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_535c9297ab9c985350671f4ef20f4f32.setContent(html_5e7f2cc06c58d31bb9773912b485a823);
+            
+        
+
+        circle_marker_3e33cb42dc22569489771171dc4c7127.bindPopup(popup_535c9297ab9c985350671f4ef20f4f32)
+        ;
+
+        
+    
+    
+            var circle_marker_99d665653d529776ee931bdf99dae72d = L.circleMarker(
+                [-34.4096, -58.6435],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_a004b4ce145c4b219ef8ff1aa0715e5a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_98b982fbd4221606f5626643c5ad1a6f = $(`<div id="html_98b982fbd4221606f5626643c5ad1a6f" style="width: 100.0%; height: 100.0%;"><b>Nordelta, Buenos Aires</b><br>Country: Argentina<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_a004b4ce145c4b219ef8ff1aa0715e5a.setContent(html_98b982fbd4221606f5626643c5ad1a6f);
+            
+        
+
+        circle_marker_99d665653d529776ee931bdf99dae72d.bindPopup(popup_a004b4ce145c4b219ef8ff1aa0715e5a)
+        ;
+
+        
+    
+    
+            var circle_marker_d96e291c09975390d40372340f037eca = L.circleMarker(
+                [-34.4708, -58.5268],
+                {"bubblingMouseEvents": true, "color": "#FF4500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF4500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 2}
+            ).addTo(feature_group_eb6dfdc7e35d343a0a6024eac1787e4f);
+        
+    
+        var popup_49513c32e110e1477c5be7e1de285734 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5e5be06dce7c4b5419d227049df2b80e = $(`<div id="html_5e5be06dce7c4b5419d227049df2b80e" style="width: 100.0%; height: 100.0%;"><b>San Isidro, Buenos Aires</b><br>Country: Argentina<br><span style='color: #FF4500;'><b>Tier 2: High Wealth</b></span></div>`)[0];
+                popup_49513c32e110e1477c5be7e1de285734.setContent(html_5e5be06dce7c4b5419d227049df2b80e);
+            
+        
+
+        circle_marker_d96e291c09975390d40372340f037eca.bindPopup(popup_49513c32e110e1477c5be7e1de285734)
+        ;
+
+        
+    
+    
+            feature_group_eb6dfdc7e35d343a0a6024eac1787e4f.addTo(map_c8be9c7cf4ab54261f9a77243df5040f);
+        
+    
+            var feature_group_55ac6b24e18c6fba3ceead502271594e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_e793b709cc01db3a42264d882e8c8529 = L.circleMarker(
+                [20.6296, -87.0739],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_f704ecf310f3deff62ce019276fa9cc9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1a719a89cf12e470961c3c4f58b73aaf = $(`<div id="html_1a719a89cf12e470961c3c4f58b73aaf" style="width: 100.0%; height: 100.0%;"><b>Playa del Carmen</b><br>Country: Mexico<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_f704ecf310f3deff62ce019276fa9cc9.setContent(html_1a719a89cf12e470961c3c4f58b73aaf);
+            
+        
+
+        circle_marker_e793b709cc01db3a42264d882e8c8529.bindPopup(popup_f704ecf310f3deff62ce019276fa9cc9)
+        ;
+
+        
+    
+    
+            var circle_marker_db6a4a51d3d8468c229a79c60b9f297a = L.circleMarker(
+                [21.1212, -86.7679],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_8dcb2f9120db57c620db5c57a18e6257 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c32cf8b02ed4eb66013cc4c1336f2380 = $(`<div id="html_c32cf8b02ed4eb66013cc4c1336f2380" style="width: 100.0%; height: 100.0%;"><b>Cancún (Hotel Zone)</b><br>Country: Mexico<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_8dcb2f9120db57c620db5c57a18e6257.setContent(html_c32cf8b02ed4eb66013cc4c1336f2380);
+            
+        
+
+        circle_marker_db6a4a51d3d8468c229a79c60b9f297a.bindPopup(popup_8dcb2f9120db57c620db5c57a18e6257)
+        ;
+
+        
+    
+    
+            var circle_marker_5b87d8c29badb9b6daeb7befe54f833f = L.circleMarker(
+                [20.5528, -100.391],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_80f66ca7bf74375252e5192fa6972453 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2d6eb3a879a49defc723c2b9e86351bd = $(`<div id="html_2d6eb3a879a49defc723c2b9e86351bd" style="width: 100.0%; height: 100.0%;"><b>Querétaro (Centro Sur)</b><br>Country: Mexico<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_80f66ca7bf74375252e5192fa6972453.setContent(html_2d6eb3a879a49defc723c2b9e86351bd);
+            
+        
+
+        circle_marker_5b87d8c29badb9b6daeb7befe54f833f.bindPopup(popup_80f66ca7bf74375252e5192fa6972453)
+        ;
+
+        
+    
+    
+            var circle_marker_7709c7a7228667e8854af3996e0a4876 = L.circleMarker(
+                [19.0265, -98.2382],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_a5105023a53e96d76141a506315156e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ee369937e741db020121d24fe7f6231d = $(`<div id="html_ee369937e741db020121d24fe7f6231d" style="width: 100.0%; height: 100.0%;"><b>Puebla (Angelópolis)</b><br>Country: Mexico<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_a5105023a53e96d76141a506315156e9.setContent(html_ee369937e741db020121d24fe7f6231d);
+            
+        
+
+        circle_marker_7709c7a7228667e8854af3996e0a4876.bindPopup(popup_a5105023a53e96d76141a506315156e9)
+        ;
+
+        
+    
+    
+            var circle_marker_35fb733b151f4592091ed334aba49577 = L.circleMarker(
+                [21.0277, -89.6106],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_df8f80650c8a3948206da6d83007d6a6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fd3ec0e3d261dc25c64aade65a72689f = $(`<div id="html_fd3ec0e3d261dc25c64aade65a72689f" style="width: 100.0%; height: 100.0%;"><b>Mérida (Norte)</b><br>Country: Mexico<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_df8f80650c8a3948206da6d83007d6a6.setContent(html_fd3ec0e3d261dc25c64aade65a72689f);
+            
+        
+
+        circle_marker_35fb733b151f4592091ed334aba49577.bindPopup(popup_df8f80650c8a3948206da6d83007d6a6)
+        ;
+
+        
+    
+    
+            var circle_marker_5155d923fc326158335bf7d76f8405a5 = L.circleMarker(
+                [-25.4372, -49.28],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_9343fd6de7967b03bc0ec22f5ec0c60d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5c8837b113e20b6df5338608a70ce7fe = $(`<div id="html_5c8837b113e20b6df5338608a70ce7fe" style="width: 100.0%; height: 100.0%;"><b>Curitiba (Batel)</b><br>Country: Brazil<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_9343fd6de7967b03bc0ec22f5ec0c60d.setContent(html_5c8837b113e20b6df5338608a70ce7fe);
+            
+        
+
+        circle_marker_5155d923fc326158335bf7d76f8405a5.bindPopup(popup_9343fd6de7967b03bc0ec22f5ec0c60d)
+        ;
+
+        
+    
+    
+            var circle_marker_498f07901003ac902960e35ae75c9f9a = L.circleMarker(
+                [-30.0277, -51.209],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_69d920fa5bef8a5f6f527da9cbbcbac4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_be2b12b5b5d54ae9b2d59999f8f9644f = $(`<div id="html_be2b12b5b5d54ae9b2d59999f8f9644f" style="width: 100.0%; height: 100.0%;"><b>Porto Alegre (Moinhos)</b><br>Country: Brazil<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_69d920fa5bef8a5f6f527da9cbbcbac4.setContent(html_be2b12b5b5d54ae9b2d59999f8f9644f);
+            
+        
+
+        circle_marker_498f07901003ac902960e35ae75c9f9a.bindPopup(popup_69d920fa5bef8a5f6f527da9cbbcbac4)
+        ;
+
+        
+    
+    
+            var circle_marker_ff062bad4088d0121dd9aab5b4e39016 = L.circleMarker(
+                [-27.4273, -48.5037],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_ccdb3f071333af4b5113e49c0d03e97a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e1f3bc94eab49c4ace29b5bd86a0620 = $(`<div id="html_7e1f3bc94eab49c4ace29b5bd86a0620" style="width: 100.0%; height: 100.0%;"><b>Florianópolis (Jurerê)</b><br>Country: Brazil<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_ccdb3f071333af4b5113e49c0d03e97a.setContent(html_7e1f3bc94eab49c4ace29b5bd86a0620);
+            
+        
+
+        circle_marker_ff062bad4088d0121dd9aab5b4e39016.bindPopup(popup_ccdb3f071333af4b5113e49c0d03e97a)
+        ;
+
+        
+    
+    
+            var circle_marker_8a32d66377e6cc3c9bb1dcb111b9344c = L.circleMarker(
+                [-22.8969, -47.0581],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_9ade3ea9c7a4bf0f3d2d49a614c92c89 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b0c1d0aebd6b860be0133604ea767711 = $(`<div id="html_b0c1d0aebd6b860be0133604ea767711" style="width: 100.0%; height: 100.0%;"><b>Campinas (Cambuí)</b><br>Country: Brazil<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_9ade3ea9c7a4bf0f3d2d49a614c92c89.setContent(html_b0c1d0aebd6b860be0133604ea767711);
+            
+        
+
+        circle_marker_8a32d66377e6cc3c9bb1dcb111b9344c.bindPopup(popup_9ade3ea9c7a4bf0f3d2d49a614c92c89)
+        ;
+
+        
+    
+    
+            var circle_marker_289a28b5a607bc7f1a58b00f843adb24 = L.circleMarker(
+                [3.4872, -76.5197],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_a72c84f38a1d95c4802c8adccdd4e01a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4dde047ce44b9c09574435cd3fc6b3d0 = $(`<div id="html_4dde047ce44b9c09574435cd3fc6b3d0" style="width: 100.0%; height: 100.0%;"><b>Cali (Norte)</b><br>Country: Colombia<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_a72c84f38a1d95c4802c8adccdd4e01a.setContent(html_4dde047ce44b9c09574435cd3fc6b3d0);
+            
+        
+
+        circle_marker_289a28b5a607bc7f1a58b00f843adb24.bindPopup(popup_a72c84f38a1d95c4802c8adccdd4e01a)
+        ;
+
+        
+    
+    
+            var circle_marker_b9534bd668889a2a5dc5d8c9acda2bb4 = L.circleMarker(
+                [11.0041, -74.807],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_61d0a8048f15db26950ce61bed47bab4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_906e858b758af80e6101a9b7abcfc016 = $(`<div id="html_906e858b758af80e6101a9b7abcfc016" style="width: 100.0%; height: 100.0%;"><b>Barranquilla (Norte)</b><br>Country: Colombia<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_61d0a8048f15db26950ce61bed47bab4.setContent(html_906e858b758af80e6101a9b7abcfc016);
+            
+        
+
+        circle_marker_b9534bd668889a2a5dc5d8c9acda2bb4.bindPopup(popup_61d0a8048f15db26950ce61bed47bab4)
+        ;
+
+        
+    
+    
+            var circle_marker_c2e904a755cf48d636ee815e05708702 = L.circleMarker(
+                [-32.8895, -68.8458],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_fa1788fc8476deab5c048871e5f2dee5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8071746db36f35f6cb8bbbfd61c0e981 = $(`<div id="html_8071746db36f35f6cb8bbbfd61c0e981" style="width: 100.0%; height: 100.0%;"><b>Mendoza (Centro)</b><br>Country: Argentina<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_fa1788fc8476deab5c048871e5f2dee5.setContent(html_8071746db36f35f6cb8bbbfd61c0e981);
+            
+        
+
+        circle_marker_c2e904a755cf48d636ee815e05708702.bindPopup(popup_fa1788fc8476deab5c048871e5f2dee5)
+        ;
+
+        
+    
+    
+            var circle_marker_aa63227de7073dfdc4ac11268685d06d = L.circleMarker(
+                [-31.4201, -64.1888],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_04f0090ef98aca5a202921f24790258e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_58ada4036db69bdbd3017fdf62b8fa2e = $(`<div id="html_58ada4036db69bdbd3017fdf62b8fa2e" style="width: 100.0%; height: 100.0%;"><b>Córdoba (Nueva Córdoba)</b><br>Country: Argentina<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_04f0090ef98aca5a202921f24790258e.setContent(html_58ada4036db69bdbd3017fdf62b8fa2e);
+            
+        
+
+        circle_marker_aa63227de7073dfdc4ac11268685d06d.bindPopup(popup_04f0090ef98aca5a202921f24790258e)
+        ;
+
+        
+    
+    
+            var circle_marker_c043e0cbedfb013d5461564732e32a78 = L.circleMarker(
+                [-32.9442, -60.6505],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_495a5c0c79252681261a6ed71de6699d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5bd14087c2f037357fa20d9242933734 = $(`<div id="html_5bd14087c2f037357fa20d9242933734" style="width: 100.0%; height: 100.0%;"><b>Rosario (Centro)</b><br>Country: Argentina<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_495a5c0c79252681261a6ed71de6699d.setContent(html_5bd14087c2f037357fa20d9242933734);
+            
+        
+
+        circle_marker_c043e0cbedfb013d5461564732e32a78.bindPopup(popup_495a5c0c79252681261a6ed71de6699d)
+        ;
+
+        
+    
+    
+            var circle_marker_43ee319ff4e41aba74323764df32f31d = L.circleMarker(
+                [-34.9618, -54.9478],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_0107f6ca62dd9ecb1bd892332e9819b9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d64eb8562974a59b5f0fced6d040172a = $(`<div id="html_d64eb8562974a59b5f0fced6d040172a" style="width: 100.0%; height: 100.0%;"><b>Punta del Este, Uruguay</b><br>Country: Uruguay<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_0107f6ca62dd9ecb1bd892332e9819b9.setContent(html_d64eb8562974a59b5f0fced6d040172a);
+            
+        
+
+        circle_marker_43ee319ff4e41aba74323764df32f31d.bindPopup(popup_0107f6ca62dd9ecb1bd892332e9819b9)
+        ;
+
+        
+    
+    
+            var circle_marker_8aacdc0a3a59fc258b7b3a6d6f70e70c = L.circleMarker(
+                [-34.8742, -56.0533],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_0a5da3a8362f9adef4e16438235cc08a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_41e0571e5464d213ce29b53fd74c9605 = $(`<div id="html_41e0571e5464d213ce29b53fd74c9605" style="width: 100.0%; height: 100.0%;"><b>Montevideo (Carrasco)</b><br>Country: Uruguay<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_0a5da3a8362f9adef4e16438235cc08a.setContent(html_41e0571e5464d213ce29b53fd74c9605);
+            
+        
+
+        circle_marker_8aacdc0a3a59fc258b7b3a6d6f70e70c.bindPopup(popup_0a5da3a8362f9adef4e16438235cc08a)
+        ;
+
+        
+    
+    
+            var circle_marker_841b40986e762f522e1d70e97d54e4b7 = L.circleMarker(
+                [-33.0246, -71.5518],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_35d99010a6e262df086ffe688981d1b4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bfdb5f8dc85e64d5f174060a253a845b = $(`<div id="html_bfdb5f8dc85e64d5f174060a253a845b" style="width: 100.0%; height: 100.0%;"><b>Viña del Mar, Chile</b><br>Country: Chile<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_35d99010a6e262df086ffe688981d1b4.setContent(html_bfdb5f8dc85e64d5f174060a253a845b);
+            
+        
+
+        circle_marker_841b40986e762f522e1d70e97d54e4b7.bindPopup(popup_35d99010a6e262df086ffe688981d1b4)
+        ;
+
+        
+    
+    
+            var circle_marker_045d7b397d5cd86a6707e452bccc2cf9 = L.circleMarker(
+                [9.9167, -84.1333],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_547e54560b5abd3920d2a47df1170804 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1082aa7900375522d7d003c9ddd74bdf = $(`<div id="html_1082aa7900375522d7d003c9ddd74bdf" style="width: 100.0%; height: 100.0%;"><b>Escazú, Costa Rica</b><br>Country: Costa Rica<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_547e54560b5abd3920d2a47df1170804.setContent(html_1082aa7900375522d7d003c9ddd74bdf);
+            
+        
+
+        circle_marker_045d7b397d5cd86a6707e452bccc2cf9.bindPopup(popup_547e54560b5abd3920d2a47df1170804)
+        ;
+
+        
+    
+    
+            var circle_marker_f2f88059b8b56bbb1ede66f493687bf4 = L.circleMarker(
+                [9.9333, -84.1833],
+                {"bubblingMouseEvents": true, "color": "#FFA500", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFA500", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(feature_group_55ac6b24e18c6fba3ceead502271594e);
+        
+    
+        var popup_4c502e5ffdb7ac75e5f0b53d8a90e697 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_18b8e2ce795529a5677b37464aba2fd3 = $(`<div id="html_18b8e2ce795529a5677b37464aba2fd3" style="width: 100.0%; height: 100.0%;"><b>Santa Ana, Costa Rica</b><br>Country: Costa Rica<br><span style='color: #FFA500;'><b>Tier 3: Notable Wealth</b></span></div>`)[0];
+                popup_4c502e5ffdb7ac75e5f0b53d8a90e697.setContent(html_18b8e2ce795529a5677b37464aba2fd3);
+            
+        
+
+        circle_marker_f2f88059b8b56bbb1ede66f493687bf4.bindPopup(popup_4c502e5ffdb7ac75e5f0b53d8a90e697)
+        ;
+
+        
+    
+    
+            feature_group_55ac6b24e18c6fba3ceead502271594e.addTo(map_c8be9c7cf4ab54261f9a77243df5040f);
+        
+    
+            var feature_group_ccb8b61cf12a6c602aa600723c930035 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_bc9889e7d3537b32654333d2c3eb81e7 = L.circleMarker(
+                [20.5888, -100.3899],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_82ac73165c4ad2d66733dfb4e7ff11aa = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4c15e105fce3eb456876a63e9baf2cf3 = $(`<div id="html_4c15e105fce3eb456876a63e9baf2cf3" style="width: 100.0%; height: 100.0%;"><b>Querétaro (Industrial)</b><br>Country: Mexico<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_82ac73165c4ad2d66733dfb4e7ff11aa.setContent(html_4c15e105fce3eb456876a63e9baf2cf3);
+            
+        
+
+        circle_marker_bc9889e7d3537b32654333d2c3eb81e7.bindPopup(popup_82ac73165c4ad2d66733dfb4e7ff11aa)
+        ;
+
+        
+    
+    
+            var circle_marker_f27df1e24e848b8410140b43a1ebe5e4 = L.circleMarker(
+                [21.8853, -102.2916],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_d5126f89aaff607068a1865297fb1484 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3684bf2226eccc4c8b2e86b15845d22e = $(`<div id="html_3684bf2226eccc4c8b2e86b15845d22e" style="width: 100.0%; height: 100.0%;"><b>Aguascalientes</b><br>Country: Mexico<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_d5126f89aaff607068a1865297fb1484.setContent(html_3684bf2226eccc4c8b2e86b15845d22e);
+            
+        
+
+        circle_marker_f27df1e24e848b8410140b43a1ebe5e4.bindPopup(popup_d5126f89aaff607068a1865297fb1484)
+        ;
+
+        
+    
+    
+            var circle_marker_811cc02e6a70dd6dea10103e9200d255 = L.circleMarker(
+                [20.9674, -89.5926],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_6b8712b89155e82c1cba7ccf1eaffa82 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f3ce344b8768bc1e87e7c33281d8aa71 = $(`<div id="html_f3ce344b8768bc1e87e7c33281d8aa71" style="width: 100.0%; height: 100.0%;"><b>Mérida (East)</b><br>Country: Mexico<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_6b8712b89155e82c1cba7ccf1eaffa82.setContent(html_f3ce344b8768bc1e87e7c33281d8aa71);
+            
+        
+
+        circle_marker_811cc02e6a70dd6dea10103e9200d255.bindPopup(popup_6b8712b89155e82c1cba7ccf1eaffa82)
+        ;
+
+        
+    
+    
+            var circle_marker_6a7ab6f4b41ef3ced19f69e3ff9328ee = L.circleMarker(
+                [22.1565, -100.9855],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_783814f94c9fa24c2abc2fd3aac05e4f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_96a56599f95ecbfafb4d897059e08964 = $(`<div id="html_96a56599f95ecbfafb4d897059e08964" style="width: 100.0%; height: 100.0%;"><b>San Luis Potosí</b><br>Country: Mexico<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_783814f94c9fa24c2abc2fd3aac05e4f.setContent(html_96a56599f95ecbfafb4d897059e08964);
+            
+        
+
+        circle_marker_6a7ab6f4b41ef3ced19f69e3ff9328ee.bindPopup(popup_783814f94c9fa24c2abc2fd3aac05e4f)
+        ;
+
+        
+    
+    
+            var circle_marker_5c1e31ba7c5778a964a709231ed9decc = L.circleMarker(
+                [21.1236, -101.683],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_876a033bcaedbd4fed90639fc08290b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c8702e023482464eab89aee7fcd04097 = $(`<div id="html_c8702e023482464eab89aee7fcd04097" style="width: 100.0%; height: 100.0%;"><b>León, Guanajuato</b><br>Country: Mexico<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_876a033bcaedbd4fed90639fc08290b5.setContent(html_c8702e023482464eab89aee7fcd04097);
+            
+        
+
+        circle_marker_5c1e31ba7c5778a964a709231ed9decc.bindPopup(popup_876a033bcaedbd4fed90639fc08290b5)
+        ;
+
+        
+    
+    
+            var circle_marker_54f0babfda361151882ff8ec336e6119 = L.circleMarker(
+                [25.5428, -103.4068],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_5b7291ed93baca49ee382aff47f8c69b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d6bdcdf56e113d382a1270ed7ee68314 = $(`<div id="html_d6bdcdf56e113d382a1270ed7ee68314" style="width: 100.0%; height: 100.0%;"><b>Torreón</b><br>Country: Mexico<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_5b7291ed93baca49ee382aff47f8c69b.setContent(html_d6bdcdf56e113d382a1270ed7ee68314);
+            
+        
+
+        circle_marker_54f0babfda361151882ff8ec336e6119.bindPopup(popup_5b7291ed93baca49ee382aff47f8c69b)
+        ;
+
+        
+    
+    
+            var circle_marker_18832ec20d9935578d72965b9083cc24 = L.circleMarker(
+                [7.1254, -73.1198],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_d01721b88cf64e61eacfb9930eb63d95 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_692143279c5d889bafddbf616de35f82 = $(`<div id="html_692143279c5d889bafddbf616de35f82" style="width: 100.0%; height: 100.0%;"><b>Bucaramanga</b><br>Country: Colombia<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_d01721b88cf64e61eacfb9930eb63d95.setContent(html_692143279c5d889bafddbf616de35f82);
+            
+        
+
+        circle_marker_18832ec20d9935578d72965b9083cc24.bindPopup(popup_d01721b88cf64e61eacfb9930eb63d95)
+        ;
+
+        
+    
+    
+            var circle_marker_385e53637254b5234edb8fe2a04ce0b9 = L.circleMarker(
+                [4.8133, -75.6961],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_1bfb5fe4a9ed0a5ba295630c78f27159 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7c9d8766998ef52bc1cd12ea2cbd4e37 = $(`<div id="html_7c9d8766998ef52bc1cd12ea2cbd4e37" style="width: 100.0%; height: 100.0%;"><b>Pereira</b><br>Country: Colombia<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_1bfb5fe4a9ed0a5ba295630c78f27159.setContent(html_7c9d8766998ef52bc1cd12ea2cbd4e37);
+            
+        
+
+        circle_marker_385e53637254b5234edb8fe2a04ce0b9.bindPopup(popup_1bfb5fe4a9ed0a5ba295630c78f27159)
+        ;
+
+        
+    
+    
+            var circle_marker_ca5501ff30df16b895e117b4ea72834e = L.circleMarker(
+                [5.07, -75.5138],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_e0edc6887462f4717048970544bf1176 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_744b795e87364a6849925f8f96d0c30e = $(`<div id="html_744b795e87364a6849925f8f96d0c30e" style="width: 100.0%; height: 100.0%;"><b>Manizales</b><br>Country: Colombia<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_e0edc6887462f4717048970544bf1176.setContent(html_744b795e87364a6849925f8f96d0c30e);
+            
+        
+
+        circle_marker_ca5501ff30df16b895e117b4ea72834e.bindPopup(popup_e0edc6887462f4717048970544bf1176)
+        ;
+
+        
+    
+    
+            var circle_marker_df1398288c9131f0aa05e52e09ebe7ed = L.circleMarker(
+                [11.2408, -74.199],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_c1ec8b3b9193b2c004e4240dce66fe5c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6ab6fef568317dab8cfc6f2e276f8c49 = $(`<div id="html_6ab6fef568317dab8cfc6f2e276f8c49" style="width: 100.0%; height: 100.0%;"><b>Santa Marta (Centro)</b><br>Country: Colombia<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_c1ec8b3b9193b2c004e4240dce66fe5c.setContent(html_6ab6fef568317dab8cfc6f2e276f8c49);
+            
+        
+
+        circle_marker_df1398288c9131f0aa05e52e09ebe7ed.bindPopup(popup_c1ec8b3b9193b2c004e4240dce66fe5c)
+        ;
+
+        
+    
+    
+            var circle_marker_8b398fd5fc8dd2257214f183046cbe52 = L.circleMarker(
+                [10.9639, -74.7964],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_48fc7c7eb1368abca363c7c935479c99 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2454b31502b0631bdcba841aabb7c4f8 = $(`<div id="html_2454b31502b0631bdcba841aabb7c4f8" style="width: 100.0%; height: 100.0%;"><b>Barranquilla (Sur)</b><br>Country: Colombia<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_48fc7c7eb1368abca363c7c935479c99.setContent(html_2454b31502b0631bdcba841aabb7c4f8);
+            
+        
+
+        circle_marker_8b398fd5fc8dd2257214f183046cbe52.bindPopup(popup_48fc7c7eb1368abca363c7c935479c99)
+        ;
+
+        
+    
+    
+            var circle_marker_b6b82e9f4496c6fbcd59cdf33845e521 = L.circleMarker(
+                [4.5339, -75.6811],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_42dab3ad065d8607a9986dc67fa161f4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f4f8775f6a574cab466f6e2e79dd87fd = $(`<div id="html_f4f8775f6a574cab466f6e2e79dd87fd" style="width: 100.0%; height: 100.0%;"><b>Armenia</b><br>Country: Colombia<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_42dab3ad065d8607a9986dc67fa161f4.setContent(html_f4f8775f6a574cab466f6e2e79dd87fd);
+            
+        
+
+        circle_marker_b6b82e9f4496c6fbcd59cdf33845e521.bindPopup(popup_42dab3ad065d8607a9986dc67fa161f4)
+        ;
+
+        
+    
+    
+            var circle_marker_674075df6e92c141804377d846e3c931 = L.circleMarker(
+                [-21.1699, -47.8099],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_70ccdd586ef27288cf15e0df49705d02 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dc11292f4a4e0e3851ac4019af3c76bc = $(`<div id="html_dc11292f4a4e0e3851ac4019af3c76bc" style="width: 100.0%; height: 100.0%;"><b>Ribeirão Preto</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_70ccdd586ef27288cf15e0df49705d02.setContent(html_dc11292f4a4e0e3851ac4019af3c76bc);
+            
+        
+
+        circle_marker_674075df6e92c141804377d846e3c931.bindPopup(popup_70ccdd586ef27288cf15e0df49705d02)
+        ;
+
+        
+    
+    
+            var circle_marker_85b3561aaa8281a8beae48704ff8de32 = L.circleMarker(
+                [-26.3045, -48.8487],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_84c5e76c8c47510587584cffbb0e6463 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e6e1121dbfd27f28ae6a40284309a51e = $(`<div id="html_e6e1121dbfd27f28ae6a40284309a51e" style="width: 100.0%; height: 100.0%;"><b>Joinville</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_84c5e76c8c47510587584cffbb0e6463.setContent(html_e6e1121dbfd27f28ae6a40284309a51e);
+            
+        
+
+        circle_marker_85b3561aaa8281a8beae48704ff8de32.bindPopup(popup_84c5e76c8c47510587584cffbb0e6463)
+        ;
+
+        
+    
+    
+            var circle_marker_2edce2cabe389cf6b04ac124c1d0e290 = L.circleMarker(
+                [-23.3045, -51.1696],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_1f1caa3b124de54195218a4143e6801c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9db9da3b41f89346e588da8fab504521 = $(`<div id="html_9db9da3b41f89346e588da8fab504521" style="width: 100.0%; height: 100.0%;"><b>Londrina</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_1f1caa3b124de54195218a4143e6801c.setContent(html_9db9da3b41f89346e588da8fab504521);
+            
+        
+
+        circle_marker_2edce2cabe389cf6b04ac124c1d0e290.bindPopup(popup_1f1caa3b124de54195218a4143e6801c)
+        ;
+
+        
+    
+    
+            var circle_marker_a785092faba049a1987e1896f6ed1ca9 = L.circleMarker(
+                [-23.4205, -51.9333],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_edb7bcd0c2f8aee2fbf2c91666390f71 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_babb7b0f2ce6331e5b15c96f05532a92 = $(`<div id="html_babb7b0f2ce6331e5b15c96f05532a92" style="width: 100.0%; height: 100.0%;"><b>Maringá</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_edb7bcd0c2f8aee2fbf2c91666390f71.setContent(html_babb7b0f2ce6331e5b15c96f05532a92);
+            
+        
+
+        circle_marker_a785092faba049a1987e1896f6ed1ca9.bindPopup(popup_edb7bcd0c2f8aee2fbf2c91666390f71)
+        ;
+
+        
+    
+    
+            var circle_marker_8ab4fbf506dae5b0de313d2764c51760 = L.circleMarker(
+                [-23.9608, -46.3334],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_52a546d9474de78aa9ab3b4bdc1cfb32 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_23613c64383f8f271313ac740d4eba63 = $(`<div id="html_23613c64383f8f271313ac740d4eba63" style="width: 100.0%; height: 100.0%;"><b>Santos</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_52a546d9474de78aa9ab3b4bdc1cfb32.setContent(html_23613c64383f8f271313ac740d4eba63);
+            
+        
+
+        circle_marker_8ab4fbf506dae5b0de313d2764c51760.bindPopup(popup_52a546d9474de78aa9ab3b4bdc1cfb32)
+        ;
+
+        
+    
+    
+            var circle_marker_c54970d4f25ff3ef359fdd3cd0003d24 = L.circleMarker(
+                [-18.9186, -48.2772],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_03481ba48a249c39faf259436b34cf56 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_32eb99c0d16c1ef276b8f65d264659b8 = $(`<div id="html_32eb99c0d16c1ef276b8f65d264659b8" style="width: 100.0%; height: 100.0%;"><b>Uberlândia</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_03481ba48a249c39faf259436b34cf56.setContent(html_32eb99c0d16c1ef276b8f65d264659b8);
+            
+        
+
+        circle_marker_c54970d4f25ff3ef359fdd3cd0003d24.bindPopup(popup_03481ba48a249c39faf259436b34cf56)
+        ;
+
+        
+    
+    
+            var circle_marker_295cba79d393ed5c6bd028db7b4bce97 = L.circleMarker(
+                [-20.3155, -40.3128],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_0b58e435b2f23490038145d0b035e9e3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_73e051aa762c578f9d3bd33db3a98cd7 = $(`<div id="html_73e051aa762c578f9d3bd33db3a98cd7" style="width: 100.0%; height: 100.0%;"><b>Vitória</b><br>Country: Brazil<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_0b58e435b2f23490038145d0b035e9e3.setContent(html_73e051aa762c578f9d3bd33db3a98cd7);
+            
+        
+
+        circle_marker_295cba79d393ed5c6bd028db7b4bce97.bindPopup(popup_0b58e435b2f23490038145d0b035e9e3)
+        ;
+
+        
+    
+    
+            var circle_marker_0bcb94bb32bdc08296749e65df708bfd = L.circleMarker(
+                [-38.0055, -57.5426],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_8f8a7547f9e75b5e2f5eda383c85632e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bcae5f73cad99af6ab6130ebc69604f5 = $(`<div id="html_bcae5f73cad99af6ab6130ebc69604f5" style="width: 100.0%; height: 100.0%;"><b>Mar del Plata</b><br>Country: Argentina<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_8f8a7547f9e75b5e2f5eda383c85632e.setContent(html_bcae5f73cad99af6ab6130ebc69604f5);
+            
+        
+
+        circle_marker_0bcb94bb32bdc08296749e65df708bfd.bindPopup(popup_8f8a7547f9e75b5e2f5eda383c85632e)
+        ;
+
+        
+    
+    
+            var circle_marker_6375b52b2f07efba329710b82ea7ed7a = L.circleMarker(
+                [-24.7821, -65.4232],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_49c4f182f956cbd17997c1a75b03895f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7c7ef40f0e3336ebce880bcedfbf485e = $(`<div id="html_7c7ef40f0e3336ebce880bcedfbf485e" style="width: 100.0%; height: 100.0%;"><b>Salta</b><br>Country: Argentina<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_49c4f182f956cbd17997c1a75b03895f.setContent(html_7c7ef40f0e3336ebce880bcedfbf485e);
+            
+        
+
+        circle_marker_6375b52b2f07efba329710b82ea7ed7a.bindPopup(popup_49c4f182f956cbd17997c1a75b03895f)
+        ;
+
+        
+    
+    
+            var circle_marker_7c048842ce4945590413e64835c56239 = L.circleMarker(
+                [-38.9516, -68.0591],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_9c23d003bff6be5d1c7d805fe8711866 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e3a04a2041123bd47ea36c9c1c157597 = $(`<div id="html_e3a04a2041123bd47ea36c9c1c157597" style="width: 100.0%; height: 100.0%;"><b>Neuquén</b><br>Country: Argentina<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_9c23d003bff6be5d1c7d805fe8711866.setContent(html_e3a04a2041123bd47ea36c9c1c157597);
+            
+        
+
+        circle_marker_7c048842ce4945590413e64835c56239.bindPopup(popup_9c23d003bff6be5d1c7d805fe8711866)
+        ;
+
+        
+    
+    
+            var circle_marker_f11d20a321d3f1778769dfbb51cf7c0b = L.circleMarker(
+                [-31.6333, -60.7],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_2a7e734c05f05e69930f32eff2ada002 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4c21be60aa809f06644e4d0749e91b40 = $(`<div id="html_4c21be60aa809f06644e4d0749e91b40" style="width: 100.0%; height: 100.0%;"><b>Santa Fe</b><br>Country: Argentina<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_2a7e734c05f05e69930f32eff2ada002.setContent(html_4c21be60aa809f06644e4d0749e91b40);
+            
+        
+
+        circle_marker_f11d20a321d3f1778769dfbb51cf7c0b.bindPopup(popup_2a7e734c05f05e69930f32eff2ada002)
+        ;
+
+        
+    
+    
+            var circle_marker_23188d3359784017bc99b6a98bd36554 = L.circleMarker(
+                [-38.7183, -62.2663],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_2f6e702275fc1512004c32ca6d186445 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e8f09690ed75ee911697556eaf309f4d = $(`<div id="html_e8f09690ed75ee911697556eaf309f4d" style="width: 100.0%; height: 100.0%;"><b>Bahía Blanca</b><br>Country: Argentina<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_2f6e702275fc1512004c32ca6d186445.setContent(html_e8f09690ed75ee911697556eaf309f4d);
+            
+        
+
+        circle_marker_23188d3359784017bc99b6a98bd36554.bindPopup(popup_2f6e702275fc1512004c32ca6d186445)
+        ;
+
+        
+    
+    
+            var circle_marker_1c49ab3106133d8f2a63ed20966419c5 = L.circleMarker(
+                [-36.827, -73.0498],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_7a2a9482e02e276616eb4b3f98965f4f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eab14e111025b09f7a66012a6e9affbf = $(`<div id="html_eab14e111025b09f7a66012a6e9affbf" style="width: 100.0%; height: 100.0%;"><b>Concepción</b><br>Country: Chile<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_7a2a9482e02e276616eb4b3f98965f4f.setContent(html_eab14e111025b09f7a66012a6e9affbf);
+            
+        
+
+        circle_marker_1c49ab3106133d8f2a63ed20966419c5.bindPopup(popup_7a2a9482e02e276616eb4b3f98965f4f)
+        ;
+
+        
+    
+    
+            var circle_marker_cbeda2d912d3159855184eda1dcb0088 = L.circleMarker(
+                [-33.0472, -71.6127],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_f8d6b5b24da08e668d0793e8557859a1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ed816cc70f2e0b14701f8df3451ed82d = $(`<div id="html_ed816cc70f2e0b14701f8df3451ed82d" style="width: 100.0%; height: 100.0%;"><b>Valparaíso</b><br>Country: Chile<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_f8d6b5b24da08e668d0793e8557859a1.setContent(html_ed816cc70f2e0b14701f8df3451ed82d);
+            
+        
+
+        circle_marker_cbeda2d912d3159855184eda1dcb0088.bindPopup(popup_f8d6b5b24da08e668d0793e8557859a1)
+        ;
+
+        
+    
+    
+            var circle_marker_65260b07fd9acdffc69b631a05115b31 = L.circleMarker(
+                [-41.3194, -72.9831],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_d65a66b5359428f1acc98a40155b0086 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b8b55b4d45249189cfae30e19bd756b2 = $(`<div id="html_b8b55b4d45249189cfae30e19bd756b2" style="width: 100.0%; height: 100.0%;"><b>Puerto Varas</b><br>Country: Chile<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_d65a66b5359428f1acc98a40155b0086.setContent(html_b8b55b4d45249189cfae30e19bd756b2);
+            
+        
+
+        circle_marker_65260b07fd9acdffc69b631a05115b31.bindPopup(popup_d65a66b5359428f1acc98a40155b0086)
+        ;
+
+        
+    
+    
+            var circle_marker_681125e5ec18edb85a9e5f70a33c0e33 = L.circleMarker(
+                [-29.9027, -71.2519],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_ab48a63e71cd9712c261d9b60133e314 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7f05be54a420462a12423f6e088e9917 = $(`<div id="html_7f05be54a420462a12423f6e088e9917" style="width: 100.0%; height: 100.0%;"><b>La Serena</b><br>Country: Chile<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_ab48a63e71cd9712c261d9b60133e314.setContent(html_7f05be54a420462a12423f6e088e9917);
+            
+        
+
+        circle_marker_681125e5ec18edb85a9e5f70a33c0e33.bindPopup(popup_ab48a63e71cd9712c261d9b60133e314)
+        ;
+
+        
+    
+    
+            var circle_marker_5f5909841e111637aa8dea0e7c124690 = L.circleMarker(
+                [15.505, -88.025],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_30a64b50474e1b9ca960998e447dd6c1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d5034d670b8f6b7852b35695c36578a5 = $(`<div id="html_d5034d670b8f6b7852b35695c36578a5" style="width: 100.0%; height: 100.0%;"><b>San Pedro Sula, Honduras</b><br>Country: Honduras<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_30a64b50474e1b9ca960998e447dd6c1.setContent(html_d5034d670b8f6b7852b35695c36578a5);
+            
+        
+
+        circle_marker_5f5909841e111637aa8dea0e7c124690.bindPopup(popup_30a64b50474e1b9ca960998e447dd6c1)
+        ;
+
+        
+    
+    
+            var circle_marker_848b54e10289b860c34913553ecd1205 = L.circleMarker(
+                [8.4333, -82.4333],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_798676bf2943c44e66f8b18289d19781 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_17586a485ab1a209ffc1d388e8bfd50d = $(`<div id="html_17586a485ab1a209ffc1d388e8bfd50d" style="width: 100.0%; height: 100.0%;"><b>David, Panama</b><br>Country: Panama<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_798676bf2943c44e66f8b18289d19781.setContent(html_17586a485ab1a209ffc1d388e8bfd50d);
+            
+        
+
+        circle_marker_848b54e10289b860c34913553ecd1205.bindPopup(popup_798676bf2943c44e66f8b18289d19781)
+        ;
+
+        
+    
+    
+            var circle_marker_06bac67c83ad5beec09de01e9aea1cab = L.circleMarker(
+                [15.7667, -86.8],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_69c29480269c9a74fe3ee65021522012 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a5d832fb195c0d9e53af48e51a2c6f16 = $(`<div id="html_a5d832fb195c0d9e53af48e51a2c6f16" style="width: 100.0%; height: 100.0%;"><b>La Ceiba, Honduras</b><br>Country: Honduras<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_69c29480269c9a74fe3ee65021522012.setContent(html_a5d832fb195c0d9e53af48e51a2c6f16);
+            
+        
+
+        circle_marker_06bac67c83ad5beec09de01e9aea1cab.bindPopup(popup_69c29480269c9a74fe3ee65021522012)
+        ;
+
+        
+    
+    
+            var circle_marker_b812bb155408d6700da7d7edf8d0e657 = L.circleMarker(
+                [10.6346, -85.437],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_353c6c2751a420d49bcc027600e76530 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_610d51fadee829bd43257826aafaba07 = $(`<div id="html_610d51fadee829bd43257826aafaba07" style="width: 100.0%; height: 100.0%;"><b>Liberia, Costa Rica</b><br>Country: Costa Rica<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_353c6c2751a420d49bcc027600e76530.setContent(html_610d51fadee829bd43257826aafaba07);
+            
+        
+
+        circle_marker_b812bb155408d6700da7d7edf8d0e657.bindPopup(popup_353c6c2751a420d49bcc027600e76530)
+        ;
+
+        
+    
+    
+            var circle_marker_4824209004a63ca237f83f843631cc99 = L.circleMarker(
+                [14.5986, -90.4953],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_0fe15bc062cff67cebbd102d7503ec9e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a9642c31cdf0254e48747a1aa575ac2a = $(`<div id="html_a9642c31cdf0254e48747a1aa575ac2a" style="width: 100.0%; height: 100.0%;"><b>Guatemala City (Zona 10)</b><br>Country: Guatemala<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_0fe15bc062cff67cebbd102d7503ec9e.setContent(html_a9642c31cdf0254e48747a1aa575ac2a);
+            
+        
+
+        circle_marker_4824209004a63ca237f83f843631cc99.bindPopup(popup_0fe15bc062cff67cebbd102d7503ec9e)
+        ;
+
+        
+    
+    
+            var circle_marker_78413114b9e2020abc7cfc40d7e0e0a1 = L.circleMarker(
+                [12.115, -86.2362],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_c3cbf93301d948d513a4d53893116051 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8b3866f61b833892281997cbc626387c = $(`<div id="html_8b3866f61b833892281997cbc626387c" style="width: 100.0%; height: 100.0%;"><b>Managua (Carretera Sur)</b><br>Country: Nicaragua<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_c3cbf93301d948d513a4d53893116051.setContent(html_8b3866f61b833892281997cbc626387c);
+            
+        
+
+        circle_marker_78413114b9e2020abc7cfc40d7e0e0a1.bindPopup(popup_c3cbf93301d948d513a4d53893116051)
+        ;
+
+        
+    
+    
+            var circle_marker_4d86953da9b814cc99892e8962a9f2d2 = L.circleMarker(
+                [-16.409, -71.5375],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_a33fc95f04587f78b6e69cf6bc669b38 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_44e14e741e59bd3b763cc7918989841e = $(`<div id="html_44e14e741e59bd3b763cc7918989841e" style="width: 100.0%; height: 100.0%;"><b>Arequipa</b><br>Country: Peru<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_a33fc95f04587f78b6e69cf6bc669b38.setContent(html_44e14e741e59bd3b763cc7918989841e);
+            
+        
+
+        circle_marker_4d86953da9b814cc99892e8962a9f2d2.bindPopup(popup_a33fc95f04587f78b6e69cf6bc669b38)
+        ;
+
+        
+    
+    
+            var circle_marker_0abe9789a2766606ab157d93b3180259 = L.circleMarker(
+                [-8.1116, -79.0288],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_c016a721e908cac4fdf69e3b4da3fef3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_28752a9b91943dee573fe4d661ddb650 = $(`<div id="html_28752a9b91943dee573fe4d661ddb650" style="width: 100.0%; height: 100.0%;"><b>Trujillo</b><br>Country: Peru<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_c016a721e908cac4fdf69e3b4da3fef3.setContent(html_28752a9b91943dee573fe4d661ddb650);
+            
+        
+
+        circle_marker_0abe9789a2766606ab157d93b3180259.bindPopup(popup_c016a721e908cac4fdf69e3b4da3fef3)
+        ;
+
+        
+    
+    
+            var circle_marker_c8a1fcf902633cf9eaa203341e923fb9 = L.circleMarker(
+                [-2.9001, -79.0059],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_147b5528e720d8426f6d3649e23ae7a7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_32990515613306d6d82a49e6b2f82cd9 = $(`<div id="html_32990515613306d6d82a49e6b2f82cd9" style="width: 100.0%; height: 100.0%;"><b>Cuenca</b><br>Country: Ecuador<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_147b5528e720d8426f6d3649e23ae7a7.setContent(html_32990515613306d6d82a49e6b2f82cd9);
+            
+        
+
+        circle_marker_c8a1fcf902633cf9eaa203341e923fb9.bindPopup(popup_147b5528e720d8426f6d3649e23ae7a7)
+        ;
+
+        
+    
+    
+            var circle_marker_74ac8e0a2e79138ec93d6517e69cd488 = L.circleMarker(
+                [-2.1709, -79.9224],
+                {"bubblingMouseEvents": true, "color": "#FFD700", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFD700", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ccb8b61cf12a6c602aa600723c930035);
+        
+    
+        var popup_73694cac92a15bef04ab7f8aac52dd5b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_10657988bb9c715f5ac1c7f31e9cc6da = $(`<div id="html_10657988bb9c715f5ac1c7f31e9cc6da" style="width: 100.0%; height: 100.0%;"><b>Guayaquil (Norte)</b><br>Country: Ecuador<br><span style='color: #FFD700;'><b>Tier 4: Upper-Middle Wealth</b></span></div>`)[0];
+                popup_73694cac92a15bef04ab7f8aac52dd5b.setContent(html_10657988bb9c715f5ac1c7f31e9cc6da);
+            
+        
+
+        circle_marker_74ac8e0a2e79138ec93d6517e69cd488.bindPopup(popup_73694cac92a15bef04ab7f8aac52dd5b)
+        ;
+
+        
+    
+    
+            feature_group_ccb8b61cf12a6c602aa600723c930035.addTo(map_c8be9c7cf4ab54261f9a77243df5040f);
+        
+    
+            var layer_control_8dbbbcecc31904730cca1928b5065053_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_acf2f3b9a9aeb97a45bbaa6a786499c5,
+                },
+                overlays :  {
+                    "\u003cspan style=\"color: #8B0000; font-weight: bold;\"\u003eTier 1: Highest Wealth\u003c/span\u003e" : feature_group_fe14a4fb52751514230fd65a8ca0146a,
+                    "\u003cspan style=\"color: #FF4500; font-weight: bold;\"\u003eTier 2: High Wealth\u003c/span\u003e" : feature_group_eb6dfdc7e35d343a0a6024eac1787e4f,
+                    "\u003cspan style=\"color: #FFA500; font-weight: bold;\"\u003eTier 3: Notable Wealth\u003c/span\u003e" : feature_group_55ac6b24e18c6fba3ceead502271594e,
+                    "\u003cspan style=\"color: #FFD700; font-weight: bold;\"\u003eTier 4: Upper-Middle Wealth\u003c/span\u003e" : feature_group_ccb8b61cf12a6c602aa600723c930035,
+                },
+            };
+            let layer_control_8dbbbcecc31904730cca1928b5065053 = L.control.layers(
+                layer_control_8dbbbcecc31904730cca1928b5065053_layers.base_layers,
+                layer_control_8dbbbcecc31904730cca1928b5065053_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_c8be9c7cf4ab54261f9a77243df5040f);
+
+        
+</script>
+</html>
